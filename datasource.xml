@@ -1,0 +1,20 @@
+<datasource xmlns='uri:falcon:datasource:0.1' colo='colo_sample' description='desc_sample' type='oracle' name='entity_name'>
+  <tags>dbName=dbName_sample,dbType=Oracle</tags>
+  <interfaces>
+    <interface type='readonly' endpoint='jdbc:oracle:thin:@//db_host:db_port/db_tsn'>
+      <credential type='password-text'>
+        <userName>user_name</userName>
+        <passwordText>user_pwd</passwordText>
+      </credential>
+    </interface>
+    <credential type='password-text'>
+      <userName>user_name</userName>
+      <passwordText>user_pwd</passwordText>
+    </credential>
+  </interfaces>
+  <driver>
+    <clazz>oracle.jdbc.driver.OracleDriver</clazz>
+    <jar>/user/oozie/share/lib/lib_20161221211109/sqoop/ojdbc6.jar</jar>
+  </driver>
+  <ACL owner='admin' group='hdfs' permission='0x755'/>
+</datasource>
