@@ -4,6 +4,11 @@ import xmltodict
 
 acl_owner= 'trace'
 acl_group= 'hdfs'
+
+print("Expected a csv file with System,IP,Port,TNS,Login,Password\n")
+print("If error occur change the location of the files in python scripts\n")
+print("ACL ownership need to be amended in the python scripts")
+
 with open('/home/abyres/Documents/trace_tm/falcon_sensitive_files/everything-about-trace.csv') as data:
 	cred = pd.read_csv(data)
 	number_of_datasource = len(cred['System'])
