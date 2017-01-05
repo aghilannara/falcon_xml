@@ -1,0 +1,41 @@
+<feed xmlns='uri:falcon:feed:0.1' name='feed_name' description='feed_desc'>
+  <tags>tableName=tags_tableName,dbName=tags_dbName</tags>
+  <availabilityFlag>_success</availabilityFlag>
+  <frequency>days(1)</frequency>
+  <timezone>GMT+08:00</timezone>
+  <late-arrival cut-off='hours(4)'/>
+  <clusters>
+    <cluster name='TMDATALAKEP' type='source'>
+      <validity start='validityTime' end='2099-12-31T03:59Z'/>
+      <retention limit='retentionLimit' action='delete'/>
+      <import>
+        <source name='rdbmsName' tableName='rdbms_tableName'>
+          <extract type='full'>
+            <mergepolicy>snapshot</mergepolicy>
+          </extract>
+        </source>
+      </import>
+      <locations>
+        <location type='data' path='target_dir'>
+        </location>
+        <location type='stats' path='/'>
+        </location>
+      </locations>
+    </cluster>
+  </clusters>
+  <locations>
+    <location type='data' path='target_dir'>
+    </location>
+    <location type='stats' path='/'>
+    </location>
+  </locations>
+  <ACL owner='acl_owner' group='acl_group' permission='0x755'/>
+  <schema location='/none' provider='/none'/>
+  <properties>
+    <property name='queueName' value='default'>
+    </property>
+    <property name='jobPriority' value='NORMAL'>
+    </property>
+  </properties>
+</feed>
+
