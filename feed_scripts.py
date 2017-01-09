@@ -3,6 +3,7 @@ import pdb
 import xmltodict
 import datetime
 import os
+import glob
 
 acl_owner= 'trace'
 acl_group= 'hdfs'
@@ -10,6 +11,7 @@ data_owner = 'trace'
 print("Expected a csv file with Data Source, Table Name and Daily Ingestion Time")
 print("If error occur change the location of the files (feed.xml and data_ingestion_plan.csv) in python scripts")
 print("ACL ownership need to be amended in the python scripts")
+
 
 with open('/home/abyres/Documents/trace_tm/falcon_sensitive_files/data_ingestion_plan.csv') as data:
 	tl = pd.read_csv(data)
@@ -101,4 +103,6 @@ with open('/home/abyres/Documents/trace_tm/falcon_sensitive_files/data_ingestion
 				f.write(changes)
 				f.close()
 
+for listoffiles in glob.glob('/home/abyres/Documents/trace_tm/falcon_sensitive_files/feeds/*/*00.xml'):
+	os.remove(listoffiles)
 #pdb.set_trace()

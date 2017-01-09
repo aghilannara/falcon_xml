@@ -1,0 +1,20 @@
+<process xmlns='uri:falcon:process:0.1' name='process_name'>
+  <tags>sourceHDFS=tags_sourceHDFS,targetTable=tags_targetTable,tableName=tags_tableName,dbName=tags_dbName</tags>
+  <clusters>
+    <cluster name='TMDATALAKEP'>
+      <validity start='validityTime' end='2099-12-31T03:59Z'/>
+    </cluster>
+  </clusters>
+  <parallel>1</parallel>
+  <order>FIFO</order>
+  <frequency>days(1)</frequency>
+  <timezone>GMT+08:00</timezone>
+  <inputs>
+    <input name='input_name' feed='input_feed' start='now(0,0)' end='now(0,0)'>
+    </input>
+  </inputs>
+  <workflow name='workflow_name' engine='hive' path='workflow_path_name'/>
+  <retry policy='periodic' delay='minutes(30)' attempts='3'/>
+  <ACL owner='acl_owner' group='acl_group' permission='0x755'/>
+</process>
+
